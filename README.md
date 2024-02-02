@@ -1,1 +1,1 @@
-# dbt-duckDB
+# dbt-duckDB-games
