@@ -12,10 +12,9 @@ SELECT
     information_games.game_name,
     information_games.release_date,
     information_games.is_free_to_play,
-    ROUND(AVG(player_count.player_count)) AS avg_player,
-    MAX(player_count.player_count) AS max_player,
-    MIN(player_count.player_count) AS min_player,
-    SUM(player_count.player_count) AS sum_player
+    ROUND(AVG(player_count.player_count)) AS avg_num_player,
+    MAX(player_count.player_count) AS max_num_player,
+    MIN(player_count.player_count) AS min__num_player,
 FROM
     player_count
     LEFT JOIN information_games ON
