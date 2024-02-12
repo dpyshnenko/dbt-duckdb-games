@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: intermediate
+    database: assignment-games-valve
+    schema: valve_games
+
+    tables:
+      - name: int_player_count_union
+      - name: int_player_count_5min

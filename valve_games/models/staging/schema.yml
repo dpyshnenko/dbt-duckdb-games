@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: staging
+    database: assignment-games-valve
+    schema: valve_games
+
+    tables:
+      - name: application_developers
+        description: "A view with information about application developers"
+      - name: application_genres
+      - name: application_information
+      - name: application_packages
+      - name: application_publishers
+      - name: application_supported_languages
+      - name: application_tags
+      - name: player_count_1h
+      - name: player_count_5min
+      - name: price_history
