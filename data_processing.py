@@ -27,12 +27,12 @@ def combine_csv_files(directory, output_file):
 
         # Loop through each file in the directory
         for filename in os.listdir(directory):
-            if filename.endswith('.csv'):
+            if filename.endswith(".csv"):
                 # Read the current CSV file into a DataFrame
                 df = pd.read_csv(os.path.join(directory, filename))
 
                 # Add a column with the filename (application ID)
-                df['application_id'] = filename.replace('.csv', '')
+                df["application_id"] = filename.replace(".csv", "")
 
                 # Append the current DataFrame to the big table
                 one_big_table = pd.concat([one_big_table, df], ignore_index=True)
@@ -48,6 +48,7 @@ def combine_csv_files(directory, output_file):
 
     except Exception as e:
         print(f"An error occurred: {e}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
