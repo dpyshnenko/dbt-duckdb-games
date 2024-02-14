@@ -1,20 +1,14 @@
-{{
-    config(
-        materialized='view'
-    )
-}}
+{{ config(materialized='view') }}
 
-with
-
-application_information as (
-    select * from {{ source('staging', 'application_information')}}
+WITH application_information AS (
+    SELECT * FROM {{ source('staging', 'application_information')}}
 )
 
-select
-    {{ dbt_utils.generate_surrogate_key(['appId', 'name']) }} as game_id,
-    appId as application_id,
+SELECT
+    {{ dbt_utils.generate_surrogate_key(['appId', 'name']) }} AS game_id,
+    appId AS application_id,
     type,
-    name as game_name,
-    releasedate as release_date,
-    freetoplay as is_free_to_play,
-from application_information
+    name AS game_name,
+    releasedate AS release_date,
+    COALESCE(freetoplay, 1) AS is_free_to_play
+FROM application_information

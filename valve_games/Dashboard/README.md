@@ -8,5 +8,6 @@ A draft of the dashboard in Google Data Studio, which utilizes data from the mar
 
 This dashboard provides visualizations of key metrics derived from our dbt models, including:
 - Price history and discount rates per game
+- Summary statistics
 - Player count statistics per game
 

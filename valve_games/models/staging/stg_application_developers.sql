@@ -4,14 +4,17 @@
     )
 }}
 
-with
+WITH
 
-application_developers as (
-    select * from {{ source('staging', 'application_developers')}}
+application_developers AS (
+    SELECT * FROM {{ source('staging', 'application_developers') }}
 )
 
-select
-    {{ dbt_utils.generate_surrogate_key(['appId', 'developer']) }} as developer_id,
-    appId as application_id,
-    developer as developer_name
-from application_developers
+SELECT
+    appid AS application_id,
+    developer AS developer_name
+FROM application_developers
+WHERE
+    developer IS NOT NULL
+    AND appid IS NOT NULL
+    AND TRIM(developer) != ''

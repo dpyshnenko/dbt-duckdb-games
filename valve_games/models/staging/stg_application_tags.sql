@@ -15,4 +15,6 @@ select
     appId as application_id,
     tag,
 from application_tags
-
+WHERE tag IS NOT NULL
+AND appId IS NOT NULL
+AND TRIM(tag) <> ''

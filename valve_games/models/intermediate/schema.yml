@@ -8,3 +8,4 @@ sources:
     tables:
       - name: int_player_count_union
       - name: int_player_count_5min
+      - name: int_application_details
