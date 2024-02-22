@@ -1,20 +1,12 @@
-{{
-    config(
-        materialized='view'
-    )
-}}
-
-with
-
-application_publishers as (
-    select * from {{ source('staging', 'application_publishers') }}
+WITH application_publishers AS (
+    SELECT * FROM {{ source('staging', 'application_publishers') }}
 )
 
-select
-    appid as application_id,
-    publisher as publisher_name
-from application_publishers
-where
-    publisher is not NULL
-    and appid is not NULL
-    and TRIM(publisher) != ''
+SELECT
+    appid AS application_id,
+    publisher AS publisher_name
+FROM application_publishers
+WHERE
+    publisher IS NOT NULL
+    AND appid IS NOT NULL
+    AND TRIM(publisher) != ''

@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 WITH application_genres AS (
     SELECT * FROM {{ source('staging', 'application_genres') }}
 )

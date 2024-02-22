@@ -1,15 +1,15 @@
 {{ config(materialized='view') }}
 
 WITH
-player_count AS (SELECT * FROM {{ ref('int_player_count_union') }}),
+player_count AS (SELECT * FROM {{ ref('fct_player_count_hour_agg') }}),
 
-information_games AS (SELECT * FROM {{ ref('stg_application_information') }})
+information_games AS (SELECT * FROM {{ ref('dim_application_information') }})
 
 SELECT
     CAST(player_count.application_id AS INT) AS application_id,
-    player_count.date,
-    player_count.rank,
-    information_games.type,
+    player_count.count_date,
+    player_count.application_rank,
+    information_games.application_type,
     information_games.game_name,
     information_games.release_date,
     information_games.is_free_to_play,

@@ -1,0 +1,120 @@
+version: 2
+
+sources:
+  - name: staging
+    database: assignment-games-valve
+    schema: valve_games
+    tables:
+      - name: application_developers
+        description: "A view with information about application developers."
+        columns:
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: developer_name
+            description: "The name of the developer."
+
+      - name: application_genres
+        description: "A view with information about application genres."
+        columns:
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: game_genre
+            description: "The genre of the game."
+
+      - name: application_information
+        description: "A view with information about application information."
+        columns:
+          - name: game_id
+            description: "A surrogate key for the game."
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: application_type
+            description: "The type of the application."
+          - name: game_name
+            description: "The name of the game."
+          - name: release_date
+            description: "The release date of the game."
+          - name: is_free_to_play
+            description: "Indicates whether the game is free to play."
+
+      - name: application_packages
+        description: "A view with information about application packages."
+        columns:
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: package_id
+            description: "The unique identifier for the package."
+
+      - name: application_publishers
+        description: "A view with information about application publishers."
+        columns:
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: publisher_name
+            description: "The name of the publisher."
+
+      - name: application_supported_languages
+        description: "A view with information about application supported languages."
+        columns:
+          - name: language_id
+            description: "A surrogate key for the language."
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: language
+            description: "The supported language."
+
+      - name: application_tags
+        description: "A view with information about application tags."
+        columns:
+          - name: tag_id
+            description: "A surrogate key for the tag."
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: tag
+            description: "The tag assigned to the application."
+
+      - name: player_count_1h
+        description: "A view with information about player count every hour for the top 1001-2000 applications."
+        columns:
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: application_rank
+            description: "A rank indicating the application is within the top 2000."
+          - name: count_date
+            description: "The date for which the player count is recorded."
+          - name: hour_start
+            description: "The start of the hour for which player count is recorded."
+          - name: player_count
+            description: "The number of players."
+
+      - name: player_count_5min
+        description: "A view with information about player count every 5 minutes for the top 1-1000 applications."
+        columns:
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: count_time
+            description: "The specific time at which player count is recorded."
+          - name: player_count
+            description: "The number of players."
+          - name: application_rank
+            description: "A rank indicating the application is within the top 1000."
+          - name: count_date
+            description: "The date for which the player count is recorded."
+          - name: count_hour
+            description: "The hour for which the player count is recorded."
+
+      - name: price_history
+        description: "A view with information about price history."
+        columns:
+          - name: price_history_id
+            description: "A surrogate key for the price history record."
+          - name: application_id
+            description: "The unique identifier for the application."
+          - name: price_date
+            description: "The date of the price."
+          - name: initial_price
+            description: "The initial price of the application."
+          - name: final_price
+            description: "The final price of the application."
+          - name: discount
+            description: "The discount applied to the application."

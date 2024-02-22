@@ -1,12 +1,4 @@
-{{
-    config(
-        materialized='view'
-    )
-}}
-
-WITH
-
-application_developers AS (
+WITH application_developers AS (
     SELECT * FROM {{ source('staging', 'application_developers') }}
 )
 

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: fct_games_price_history
+    description: "A fact table that tracks the price history of games over time."
+    columns:
+      - name: application_id
+        description: "The unique identifier for the application/game."
+        tests:
+          - not_null
+      - name: price_date
+        description: "The date when the price was recorded."
+      - name: initial_price
+        description: "The initial price of the game before any discounts."
+      - name: final_price
+        description: "The final price of the game after applying discounts."
+      - name: discount
+        description: "The discount applied to the initial price."
+
+  - name: fct_player_count_hour_agg
+    description: "A fact table aggregating player counts on an hourly basis."
+    columns:
+      - name: application_id
+        description: "The unique identifier for the application/game."
+        tests:
+          - not_null
+      - name: application_rank
+        description: "The rank of the application based on some metric, such as player count."
+      - name: count_date
+        description: "The date and hour for which the player count is aggregated."
+      - name: player_count
+        description: "The average number of players during the hour."
+
+  - name: fct_player_count_day_agg
+    description: "A derived fact table aggregating player counts on a daily basis from hourly and 5-minute aggregates."
+    columns:
+      - name: application_id
+        description: "The unique identifier for the application/game."
+        tests:
+          - not_null
+      - name: application_rank
+        description: "The rank of the application based on some metric, such as player count."
+      - name: count_date
+        description: "The date for which the player count is aggregated."
+      - name: player_count
+        description: "The average number of players during the day."

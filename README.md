@@ -38,7 +38,7 @@ Within the project directory, you can use the following commands to run transfor
 - `mrt_player_count_agg`: Mart layer with aggregated player count statistics.
 
 ### Data Model Lineage 
-![dbt-dag.png](valve_games/dbt-dag.png)
+![dbt-dag.png](valve_games/assets/dbt-dag.png)
 
 ### Dashboard
 A draft of the dashboard in Google Data Studio, which utilizes data from the mart layer, can be viewed at the following link:

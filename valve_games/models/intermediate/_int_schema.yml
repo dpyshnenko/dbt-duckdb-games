@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_player_count_5min_agg
+    description: "Intermediate table aggregating player count data into hourly averages."
+    columns:
+      - name: application_id
+        description: "Unique identifier for the application."
+        tests:
+          - not_null
+      - name: count_time
+        description: "Original timestamp of the player count data."
+      - name: application_rank
+        description: "Rank of the application based on player count."
+      - name: count_date
+        description: "The date extracted from count_time."
+      - name: hour_start
+        description: "Start of the hour for which player count is averaged."
+      - name: avg_player_count
+        description: "Average player count for the application during the specified hour."

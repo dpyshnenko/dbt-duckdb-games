@@ -1,19 +1,11 @@
-{{
-    config(
-        materialized='view'
-    )
-}}
-
-with
-
-application_packages as (
-    select * from {{ source('staging', 'application_packages') }}
+WITH application_packages AS (
+    SELECT * FROM {{ source('staging', 'application_packages') }}
 )
 
-select
-    appid as application_id,
-    packageid as package_id
-from application_packages
-where
-    packageid is not NULL
-    and appid is not NULL
+SELECT
+    appid AS application_id,
+    packageid AS package_id
+FROM application_packages
+WHERE
+    packageid IS NOT NULL
+    AND appid IS NOT NULL

@@ -1,23 +1,15 @@
-{{
-    config(
-        materialized='view'
-    )
-}}
-
-with
-
-player_count_5min as (
-    select * from {{ source('staging', 'player_count_5min') }}
+WITH player_count_5min AS (
+    SELECT * FROM {{ source('staging', 'player_count_5min') }}
 )
 
-select
-    time as time,
-    playercount as player_count,
+SELECT
+    CAST(appid AS INT) AS application_id,
+    time AS count_time,
+    playercount AS player_count,
     -- Extracts the date from the timestamp
-    'top_1000' as rank,
+    'top_1000' AS application_rank,
     -- Extracts the hour from the timestamp
-    CAST(appid as INT) as application_id,
-    EXTRACT(date from time) as date,
+    EXTRACT(DATE FROM time) AS count_date,
     -- Indicates this row is for a top 1000 application
-    EXTRACT(hour from time) as hour
-from player_count_5min
+    EXTRACT(HOUR FROM time) AS count_hour
+FROM player_count_5min

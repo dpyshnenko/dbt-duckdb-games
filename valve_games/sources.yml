@@ -1,0 +1,25 @@
+version: 2
+sources:
+  - name: staging
+  schema: valve_games
+  tables:
+    - name: application_developers
+    identifier: raw_application_developers
+    - name: application_genres
+    identifier: raw_application_genres
+    - name: application_information
+    identifier: raw_application_information
+    - name: application_packages
+    identifier: raw_application_packages
+    - name: application_publishers
+    identifier: raw_application_publishers
+    - name: application_supported_languages
+    identifier: raw_application_supported_languages
+    - name: application_tags
+    identifier: raw_application_tags
+    - name: player_count_1h
+    identifier: raw_player_count_1h
+    - name: player_count_5min
+    identifier: raw_player_count_5min
+    - name: price_history
+    identifier: raw_price_history

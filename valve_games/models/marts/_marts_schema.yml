@@ -1,0 +1,87 @@
+version: 2
+
+models:
+  - name: mrt_game_popularity_summary
+    description: "A mart table summarizing game popularity metrics."
+    columns:
+      - name: count_date
+        description: "The date for which data is aggregated."
+      - name: is_free_to_play
+        description: "Indicates whether the game is free to play."
+      - name: game_genre
+        description: "The genre of the game."
+      - name: avg_play_count
+        description: "The average player count for the game."
+
+  - name: mrt_games_price_history
+    description: "A mart view of games price history including initial and final prices, and discounts."
+    columns:
+      - name: price_date
+        description: "The date when the price was recorded."
+      - name: initial_price
+        description: "The initial listed price of the game."
+      - name: final_price
+        description: "The final price of the game after discounts."
+      - name: discount
+        description: "The percentage discount applied to the game."
+      - name: application_id
+        description: "The unique identifier for the application/game."
+        tests:
+          - not_null
+      - name: application_type
+        description: "The type of the application."
+      - name: game_name
+        description: "The name of the game."
+      - name: release_date
+        description: "The release date of the game."
+      - name: is_free_to_play
+        description: "Indicates whether the game is free to play."
+
+  - name: mrt_player_count_agg
+    description: "A mart table aggregating player counts, providing insights into player engagement."
+    columns:
+      - name: application_id
+        description: "The unique identifier for the application/game."
+        tests:
+          - not_null
+      - name: count_date
+        description: "The date for which player count is aggregated."
+      - name: application_rank
+        description: "Rank of the application based on some metric."
+      - name: application_type
+        description: "The type of the application."
+      - name: game_name
+        description: "The name of the game."
+      - name: release_date
+        description: "The release date of the game."
+      - name: is_free_to_play
+        description: "Indicates whether the game is free to play."
+      - name: avg_num_player
+        description: "The average number of players."
+      - name: max_num_player
+        description: "The maximum number of players."
+      - name: min_num_player
+        description: "The minimum number of players."
+
+  - name: mrt_player_engagement_trends
+    description: "Aggregates player engagement data to identify trends."
+
+  - name: mrt_top_popular_genres
+    description: "Identifies the top popular genres based on game counts."
+    columns:
+      - name: game_genre
+        description: "The genre of the game."
+      - name: avg_price
+        description: "The average price of games within the genre."
+      - name: avg_player_count
+        description: "The average player count for games within the genre."
+      - name: game_count
+        description: "The number of games within the genre."
+
+  - name: mrt_top_popular_languages
+    description: "Summarizes the most popular languages supported by applications."
+    columns:
+      - name: language
+        description: "The language supported by the application."
+      - name: lang_count
+        description: "The count of applications supporting the language."

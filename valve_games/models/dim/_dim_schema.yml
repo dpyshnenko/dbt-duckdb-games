@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: dim_application_genres
+    description: "A dimension table that contains application genres."
+    columns:
+      - name: genre_id
+        description: "The unique identifier for the genre."
+      - name: genre_name
+        description: "The name of the genre."
+
+  - name: dim_application_information
+    description: "A dimension table with detailed information about applications."
+    columns:
+      - name: application_id
+        description: "The unique identifier for the application."
+        tests:
+          - unique
+          - not_null
+      - name: application_type
+        description: "The type of the application."
+      - name: game_name
+        description: "The name of the game."
+      - name: release_date
+        description: "The release date of the game."
+      - name: is_free_to_play
+        description: "Indicates whether the game is free to play or not."
+
+  - name: dim_dates
+    description: "A dimension table that contains date attributes for analysis."
+    columns:
+      - name: date_day
+        description: "The day of the date."
+        tests:
+          - not_null
+      - name: day_of_week_iso
+        description: "The ISO day of the week."
+      - name: week_of_year
+        description: "The week of the year."
+      - name: iso_week_start_date
+        description: "The start date of the ISO week."
+      - name: month_of_year
+        description: "The month of the year."
+      - name: year_number
+        description: "The year number."
+      - name: quarter_of_year
+        description: "The quarter of the year."

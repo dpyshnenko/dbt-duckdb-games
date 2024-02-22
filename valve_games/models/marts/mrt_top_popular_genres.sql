@@ -4,7 +4,7 @@ WITH genre_counts AS (
     SELECT
         game_genre,
         COUNT(*) AS genre_count
-    FROM {{ ref('stg_application_genres') }}
+    FROM {{ ref('dim_application_genres') }}
     GROUP BY game_genre
 )
 
